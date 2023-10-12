@@ -6,19 +6,19 @@ import java.util.Locale;
 public class Encryptor {
 
     private String algorithmType;
-    private String provider;
 
     private int bitSize;
 
     private int cipherTextSize;
 
-    private int hashLength;
+    public Encryptor() {
+    }
 
     public String encryptString(String message, String hashFunction) throws NoSuchAlgorithmException {
         String algorithm = hashFunction.toUpperCase(Locale.ROOT);
         MessageDigest messageDigest = MessageDigest.getInstance(algorithm);
 
-        provider = String.valueOf(messageDigest.getProvider());
+        String provider = String.valueOf(messageDigest.getProvider());
         algorithmType = messageDigest.getAlgorithm();
         bitSize = messageDigest.getDigestLength();
 
